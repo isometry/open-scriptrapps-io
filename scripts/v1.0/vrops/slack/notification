@@ -6,23 +6,23 @@ var http = require("http");
 var _ = require("/modules/underscore/underscore.js")._;
 
 var testNotification = {
-  "updateDate":1480095515312,
-  "resourceId":"1f01d4d1-d2ab-4bea-b9a9-4f24a8f3edd9",
-  "adapterKind":"EXAMPLE",
-  "Health":1,
-  "impact":"risk",
-  "criticality":"ALERT_CRITICALITY_LEVEL_WARNING",
-  "Risk":1,
-  "resourceName":"vrops-to-slack",
-  "type":"ALERT_TYPE_NETWORK_PROBLEM",
-  "resourceKind":"RestNotificationGateway",
-  "alertName":"Empty notification test successful.",
-  "Efficiency":1,
-  "subType":"ALERT_SUBTYPE_COMPLIANCE_PROBLEM",
-  "alertId":"22523de4-5110-4237-aff0-5cc37d0d7bae",
-  "startDate":1480095515312,
-  "info":"70004",
-  "status":"ACTIVE"
+  "updateDate": 1480095515312,
+  "resourceId": "1f01d4d1-d2ab-4bea-b9a9-4f24a8f3edd9",
+  "adapterKind": "EXAMPLE",
+  "Health": 0,
+  "impact": "risk",
+  "criticality": "ALERT_CRITICALITY_LEVEL_WARNING",
+  "Risk": 0,
+  "resourceName": "vrops-to-slack",
+  "type": "ALERT_TYPE_NETWORK_PROBLEM",
+  "resourceKind": "RestNotificationGateway",
+  "alertName": "Empty notification test successful.",
+  "Efficiency": 0,
+  "subType": "ALERT_SUBTYPE_COMPLIANCE_PROBLEM",
+  "alertId": "22523de4-5110-4237-aff0-5cc37d0d7bae",
+  "startDate": 1480095515312,
+  "info": "70004",
+  "status": "ACTIVE"
 };
 
 var richTemplate = _.template(
