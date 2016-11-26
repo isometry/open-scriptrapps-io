@@ -14,6 +14,12 @@ curl -X POST 'https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=
 
  - Configure vRealize Operations Manager REST Notifications Rule to use the REST Notification Plugin, configured with a target URL ofy] `https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX` and a Certificate Thumbprint of `17:EF:95:BB:D0:7E:9A:43:E9:6C:A2:B6:4E:E2:E8:B4:21:3E:C9:CB` (correct as-of 2016-11-26).
 
+## Appearance
+
+Notifications are rendered to Slack in the following format:
+
+> **Web service – Tier Health is degraded** (Status=ACTIVE Impact=health Health=2 Risk=1 Efficiency=1)
+
 ## Optional Configuration
 
 ### Enable rich messages with direct links back to vROps
