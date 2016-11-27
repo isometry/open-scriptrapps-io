@@ -51,8 +51,11 @@ try {
   var payload = {
     "username": request.parameters.username || "vrops",
     "text": message,
-    "icon_emoji": _.template(":<%= icon %>:")({"icon": request.parameters.icon || "traffic_light"})
   };
+  
+  if ("icon" in request.parameters) {
+    payload.icon_emoji = _.template(":<%= icon %>:")({"icon": request.parameters.icon});
+  }
 
   if ("channel" in request.parameters) {
     payload.channel = request.parameters.channel;
