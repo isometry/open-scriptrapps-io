@@ -12,11 +12,13 @@ A simple serverless bridge enabling realtime push of vRealize Operations Manager
 curl -X POST 'https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'
 ```
 
- - Configure vRealize Operations Manager REST Notifications Rule to use the REST Notification Plugin, configured with a target URL ofy] `https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`, blank credentials, a Content type of `application/json` and a Certificate Thumbprint of `17:EF:95:BB:D0:7E:9A:43:E9:6C:A2:B6:4E:E2:E8:B4:21:3E:C9:CB` (correct as-of 2016-11-26).
+ - Configure vRealize Operations Manager REST Notifications Rule to use the REST Notification Plugin, configured with a target URL ofy] `https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&id=`, blank credentials, a Content type of `application/json` and a Certificate Thumbprint of `17:EF:95:BB:D0:7E:9A:43:E9:6C:A2:B6:4E:E2:E8:B4:21:3E:C9:CB` (correct as-of 2016-11-26).
+ 
+ Note: the final argument of the REST Notification Rule *MUST* be `&id=` as vROps appends either `/test` or `/<alertId>` to the end of the configured target URL.
 
 ## Appearance
 
-Notifications are rendered to Slack in the following format:
+Notifications are rendered to Slack in the following format, with the affected object and alert description directly linked to the associated objects if the `host` parameter was configured:
 
 > **Web service – Tier Health is degraded** (Status=ACTIVE Impact=health Health=2 Risk=1 Efficiency=1)
 
@@ -26,19 +28,19 @@ Notifications are rendered to Slack in the following format:
 
 By default, notifications will not be linked back to your vROps instance. By including an additional `host` parameter in the URL, both affected object and the alert will be rendered as deep links back to the associated items in your vROps instance:
 
-`https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&host=vrops.example.com`
+`https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&host=vrops.example.com&id=`
 
 ### Customise the notification bot's name and icon
 
-By default, the notification bot is called `vrops` and is represented by the [traffic_light](http://www.webpagefx.com/tools/emoji-cheat-sheet/#e_648) icon. To rename the bot or specify an alternative icon, include either or both of the `username` and `icon` parameters:
+By default, the notification bot is called `vrops` and uses the standard WebHooks icon. To rename the bot or specify an alternative icon, include either or both of the `username` and `icon` parameters:
 
-`https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&username=Bob&icon=vrops`
+`https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&username=Bob&icon=vrops&id=`
 
 ### Post to an alternative channel
 
 By default, notifications will go to whichever channel the Slack WebHook was created for. This can be overridden with the `channel` parameter:
 
-`https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&channel=#vrops`
+`https://open.scriptrapps.io/v1.0/vrops/slack/notification?webhook=T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&channel=#vrops&id=`
 
 Tip: public channels get the `#` prefix, private channels do not; messages can be sent to a single user by specifying `channel=@username`
 
